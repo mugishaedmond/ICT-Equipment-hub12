@@ -1,1 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUGI Ltd | IT Tools</title>
 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #111;
+        }
+
+        header {
+            background: #000;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #00bfff;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #00bfff;
+        }
+
+        .hero {
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            padding: 60px 7%;
+            background: linear-gradient(120deg, #000 50%, #00bfff 50%);
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #ff2020;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 25px;
+            background: #e60000;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #ff3333;
+        }
+
+        section {
+            padding: 60px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 35px;
+            margin-bottom: 40px;
+        }
+
+        .section-title span {
+            color: #e60000;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .category {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.1);
+            border-top: 5px solid #00bfff;
+        }
+
+        .category h3 {
+            margin-top: 15px;
+        }
+
+        .category-icon {
+            font-size: 50px;
+        }
+
+        .filter-area {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-area input,
+        .filter-area select {
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            min-width: 220px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .product {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,.12);
+            transition: .3s;
+        }
+
+        .product:hover {
+            transform: translateY(-7px);
+        }
+
+        .product img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: #ddd;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .new {
+            background: #00bfff;
+            color: white;
+        }
+
+        .used {
+            background: #e60000;
+            color: white;
+        }
+
+        .product h3 {
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: #e60000;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 12px 0;
+        }
+
+        .details {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .whatsapp {
+            background: #111;
+            width: 100%;
+            text-align: center;
+        }
+
+        .whatsapp:hover {
+            background: #00bfff;
+        }
+
+        .about {
+            background: #000;
+            color: white;
+            text-align: center;
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact-box {
+            background: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.1);
+        }
+
+        .phone {
+            font-size: 28px;
+            color: #e60000;
+            font-weight: bold;
+            margin: 20px;
+        }
+
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media(max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero {
+                background: #000;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">MUGI <span>Ltd</span></div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>MUGI <span>Ltd</span></h1>
+
+        <p>
+            Your trusted shop for computers, phones, desktops,
+            accessories and other IT tools.
+            We sell both new and quality second-hand products.
+        </p>
+
+        <a href="#products" class="btn">SHOP NOW</a>
+    </div>
+</section>
+
+<!-- CATEGORIES -->
+<section>
+    <h2 class="section-title">Our <span>Categories</span></h2>
+
+    <div class="categories">
+
+        <div class="category">
+            <div class="category-icon">💻</div>
+            <h3>Laptops</h3>
+            <p>New and second-hand laptops.</p>
+        </div>
+
+        <div class="category">
+            <div class="category-icon">🖥️</div>
+            <h3>Desktops</h3>
+            <p>Desktop computers for home and business.</p>
+        </div>
+
+        <div class="category">
+            <div class="category-icon">📱</div>
+            <h3>Phones</h3>
+            <p>Smartphones and mobile devices.</p>
+        </div>
+
+        <div class="category">
+            <div class="category-icon">🔌</div>
+            <h3>Accessories</h3>
+            <p>Computer and telephone accessories.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+
+    <h2 class="section-title">Our <span>Products</span></h2>
+
+    <div class="filter-area">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="Search products..."
+            onkeyup="searchProducts()"
+        >
+
+        <select id="typeFilter" onchange="filterProducts()">
+            <option value="all">All Products</option>
+            <option value="new">New Products</option>
+            <option value="used">Second-hand</option>
+        </select>
+
+    </div>
+
+    <div class="products" id="productList">
+
+        <!-- PRODUCT 1 -->
+        <div class="product" data-type="new" data-name="Dell Laptop">
+
+            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80"
+                 alt="Dell Laptop">
+
+            <div class="product-info">
+
+                <span class="badge new">NEW</span>
+
+                <h3>Dell Laptop</h3>
+
+                <p class="details">
+                    Intel Core i5<br>
+                    8GB RAM<br>
+                    256GB SSD<br>
+                    Made: 2025
+                </p>
+
+                <div class="price">450,000 RWF</div>
+
+                <button class="btn whatsapp"
+                    onclick="orderProduct('Dell Laptop')">
+                    Order on WhatsApp
+                </button>
+
+            </div>
+        </div>
+
+
+        <!-- PRODUCT 2 -->
+        <div class="product" data-type="used" data-name="HP Laptop">
+
+            <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80"
+                 alt="HP Laptop">
+
+            <div class="product-info">
+
+                <span class="badge used">SECOND-HAND</span>
+
+                <h3>HP Laptop</h3>
+
+                <p class="details">
+                    Intel Core i5<br>
+                    8GB RAM<br>
+                    500GB HDD<br>
+                    Made: 2021
+                </p>
+
+                <div class="price">280,000 RWF</div>
+
+                <button class="btn whatsapp"
+                    onclick="orderProduct('HP Laptop')">
+                    Order on WhatsApp
+                </button>
+
+            </div>
+        </div>
+
+
+        <!-- PRODUCT 3 -->
+        <div class="product" data-type="new" data-name="Samsung Phone">
+
+            <img src="https://images.unsplash.com/photo-1610945264803-c22b62d2a7b3?auto=format&fit=crop&w=800&q=80"
+                 alt="Samsung Phone">
+
+            <div class="product-info">
+
+                <span class="badge new">NEW</span>
+
+                <h3>Samsung Smartphone</h3>
+
+                <p class="details">
+                    Android Smartphone<br>
+                    128GB Storage<br>
+                    6GB RAM<br>
+                    Made: 2025
+                </p>
+
+                <div class="price">350,000 RWF</div>
+
+                <button class="btn whatsapp"
+                    onclick="orderProduct('Samsung Smartphone')">
+                    Order on WhatsApp
+                </button>
+
+            </div>
+        </div>
+
+
+        <!-- PRODUCT 4 -->
+        <div class="product" data-type="used" data-name="iPhone">
+
+            <img src="https://images.unsplash.com/photo-1592286927505-2fd1c7f3e6a1?auto=format&fit=crop&w=800&q=80"
+                 alt="iPhone">
+
+            <div class="product-info">
+
+                <span class="badge used">SECOND-HAND</span>
+
+                <h3>iPhone</h3>
+
+                <p class="details">
+                    Smartphone<br>
+                    128GB Storage<br>
+                    Good condition<br>
+                    Made: 2022
+                </p>
+
+                <div class="price">500,000 RWF</div>
+
+                <button class="btn whatsapp"
+                    onclick="orderProduct('iPhone')">
+                    Order on WhatsApp
+                </button>
+
+            </div>
+        </div>
+
+
+        <!-- PRODUCT 5 -->
+        <div class="product" data-type="new" data-name="Desktop Computer">
+
+            <img src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?auto=format&fit=crop&w=800&q=80"
+                 alt="Desktop Computer">
+
+            <div class="product-info">
+
+                <span class="badge new">NEW</span>
+
+                <h3>Desktop Computer</h3>
+
+                <p class="details">
+                    Intel Core i5<br>
+                    8GB RAM<br>
+                    512GB SSD<br>
+                    Made: 2025
+                </p>
+
+                <div class="price">550,000 RWF</div>
+
+                <button class="btn whatsapp"
+                    onclick="orderProduct('Desktop Computer')">
+                    Order on WhatsApp
+                </button>
+
+            </div>
+        </div>
+
+
+        <!-- PRODUCT 6 -->
+        <div class="product" data-type="new" data-name="Computer Keyboard">
+
+            <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80"
+                 alt="Computer Keyboard">
+
+            <div class="product-info">
+
+                <span class="badge new">NEW</span>
+
+                <h3>Computer Keyboard</h3>
+
+                <p class="details">
+                    USB Keyboard<br>
+                    Compatible with PC<br>
+                    Quality material<br>
+                    Made: 2025
+                </p>
+
+                <div class="price">15,000 RWF</div>
+
+                <button class="btn whatsapp"
+                    onclick="orderProduct('Computer Keyboard')">
+                    Order on WhatsApp
+                </button>
+
+            </div>
+        </div>
+
+
+        <!-- PRODUCT 7 -->
+        <div class="product" data-type="new" data-name="Phone Charger">
+
+            <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=800&q=80"
+                 alt="Phone Charger">
+
+            <div class="product-info">
+
+                <span class="badge new">NEW</span>
+
+                <h3>Phone Charger</h3>
+
+                <p class="details">
+                    Fast Charging<br>
+                    USB Charger<br>
+                    Compatible with smartphones<br>
+                    Made: 2025
+                </p>
+
+                <div class="price">12,000 RWF</div>
+
+                <button class="btn whatsapp"
+                    onclick="orderProduct('Phone Charger')">
+                    Order on WhatsApp
+                </button>
+
+            </div>
+        </div>
+
+
+        <!-- PRODUCT 8 -->
+        <div class="product" data-type="used" data-name="Used Desktop">
+
+            <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=800&q=80"
+                 alt="Used Desktop">
+
+            <div class="product-info">
+
+                <span class="badge used">SECOND-HAND</span>
+
+                <h3>Used Desktop Computer</h3>
+
+                <p class="details">
+                    Intel Core i5<br>
+                    8GB RAM<br>
+                    500GB HDD<br>
+                    Made: 2020
+                </p>
+
+                <div class="price">250,000 RWF</div>
+
+                <button class="btn whatsapp"
+                    onclick="orderProduct('Used Desktop Computer')">
+                    Order on WhatsApp
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+    <h2 class="section-title">
+        About <span>MUGI Ltd</span>
+    </h2>
+
+    <p>
+        MUGI Ltd is an IT tools business providing computers,
+        laptops, desktops, phones and accessories.
+        We offer both new and quality second-hand products
+        at affordable prices.
+    </p>
+
+</section>
+
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+    <h2 class="section-title">
+        Contact <span>Us</span>
+    </h2>
+
+    <div class="contact-box">
+
+        <h3>Order your product today</h3>
+
+        <div class="phone">
+            +250 785 790 708
+        </div>
+
+        <p>
+            Click the button below to order directly through WhatsApp.
+        </p>
+
+        <br>
+
+        <a
+            href="https://wa.me/250785790708"
+            target="_blank"
+            class="btn">
+            Chat on WhatsApp
+        </a>
+
+    </div>
+
+</section>
+
+
+<footer>
+    <p>
+        © 2026 MUGI Ltd. All Rights Reserved.
+    </p>
+</footer>
+
+
+<script>
+
+function orderProduct(product) {
+
+    const phone = "250785790708";
+
+    const message =
+        "Hello MUGI Ltd, I would like to order: " +
+        product +
+        ". Please provide more information.";
+
+    const url =
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        encodeURIComponent(message);
+
+    window.open(url, "_blank");
+}
+
+
+function searchProducts() {
+
+    let search =
+        document.getElementById("search")
+        .value
+        .toLowerCase();
+
+    let products =
+        document.querySelectorAll(".product");
+
+    products.forEach(function(product) {
+
+        let name =
+            product.dataset.name.toLowerCase();
+
+        if (name.includes(search)) {
+            product.style.display = "block";
+        } else {
+            product.style.display = "none";
+        }
+
+    });
+}
+
+
+function filterProducts() {
+
+    let filter =
+        document.getElementById("typeFilter").value;
+
+    let products =
+        document.querySelectorAll(".product");
+
+    products.forEach(function(product) {
+
+        if (
+            filter === "all" ||
+            product.dataset.type === filter
+        ) {
+
+            product.style.display = "block";
+
+        } else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
