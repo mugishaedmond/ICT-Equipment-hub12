@@ -1,447 +1,512 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>MUGI Ltd | IT Tools</title>
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    background: #f5f7fa;
-    color: #111;
-}
-
-/* HEADER */
-header {
-    background: #000;
-    color: white;
-    padding: 15px 6%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.logo {
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.logo span {
-    color: #00bfff;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: bold;
-}
-
-nav a:hover {
-    color: #00bfff;
-}
-
-/* CART BUTTON IN NAV */
-.cart-link {
-    background: #e60000;
-    padding: 10px 15px;
-    border-radius: 5px;
-}
-
-.cart-count {
-    background: #00bfff;
-    padding: 2px 7px;
-    border-radius: 50%;
-}
-
-/* HERO */
-.hero {
-    min-height: 500px;
-    padding: 70px 7%;
-    display: flex;
-    align-items: center;
-    color: white;
-    background: linear-gradient(120deg, #000 50%, #00bfff 50%);
-}
-
-.hero-content {
-    max-width: 650px;
-}
-
-.hero h1 {
-    font-size: 55px;
-    margin-bottom: 20px;
-}
-
-.hero h1 span {
-    color: #e60000;
-}
-
-.hero p {
-    font-size: 20px;
-    line-height: 1.7;
-    margin-bottom: 30px;
-}
-
-.btn {
-    border: none;
-    padding: 13px 22px;
-    background: #e60000;
-    color: white;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.btn:hover {
-    background: #00bfff;
-}
-
-/* SECTIONS */
-section {
-    padding: 60px 7%;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 35px;
-    margin-bottom: 40px;
-}
-
-.section-title span {
-    color: #e60000;
-}
-
-/* CATEGORIES */
-.categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-}
-
-.category {
-    background: white;
-    padding: 30px;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.1);
-    border-top: 5px solid #00bfff;
-}
-
-.category-icon {
-    font-size: 50px;
-    margin-bottom: 15px;
-}
-
-/* FILTER */
-.filter-area {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 35px;
-    flex-wrap: wrap;
-}
-
-.filter-area input,
-.filter-area select {
-    padding: 13px;
-    min-width: 230px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
-/* PRODUCTS */
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
-}
-
-.product {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,.12);
-}
-
-.product img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-}
-
-.product-info {
-    padding: 20px;
-}
-
-.badge {
-    display: inline-block;
-    padding: 6px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.new {
-    background: #00bfff;
-    color: white;
-}
-
-.used {
-    background: #e60000;
-    color: white;
-}
-
-.product h3 {
-    margin-bottom: 10px;
-}
-
-.details {
-    color: #555;
-    line-height: 1.7;
-}
-
-.price {
-    color: #e60000;
-    font-size: 21px;
-    font-weight: bold;
-    margin: 15px 0;
-}
-
-.cart-btn {
-    width: 100%;
-    background: #000;
-}
-
-.cart-btn:hover {
-    background: #00bfff;
-}
-
-/* CART */
-#cart {
-    background: #eaf9ff;
-}
-
-.cart-container {
-    max-width: 900px;
-    margin: auto;
-}
-
-.cart-item {
-    background: white;
-    margin-bottom: 15px;
-    padding: 20px;
-    border-left: 5px solid #00bfff;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    box-shadow: 0 3px 12px rgba(0,0,0,.1);
-}
-
-.cart-item h3 {
-    margin-bottom: 8px;
-}
-
-.cart-price {
-    color: #e60000;
-    font-weight: bold;
-    margin-top: 8px;
-}
-
-.quantity-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.quantity-controls button {
-    border: none;
-    background: #000;
-    color: white;
-    width: 35px;
-    height: 35px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-.quantity-controls button:hover {
-    background: #00bfff;
-}
-
-.quantity {
-    font-weight: bold;
-    min-width: 25px;
-    text-align: center;
-}
-
-.remove-btn {
-    background: #e60000 !important;
-}
-
-.cart-summary {
-    background: #000;
-    color: white;
-    padding: 30px;
-    margin-top: 25px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.cart-summary h2 {
-    margin-bottom: 20px;
-}
-
-.cart-total {
-    color: #00bfff;
-}
-
-.clear-btn {
-    margin-left: 10px;
-    background: #e60000;
-}
-
-.empty-cart {
-    text-align: center;
-    padding: 40px;
-    background: white;
-    border-radius: 10px;
-    font-size: 20px;
-}
-
-/* ABOUT */
-.about {
-    background: #000;
-    color: white;
-    text-align: center;
-}
-
-.about p {
-    max-width: 800px;
-    margin: auto;
-    line-height: 1.8;
-    font-size: 18px;
-}
-
-/* CONTACT */
-.contact {
-    text-align: center;
-}
-
-.contact-box {
-    max-width: 600px;
-    margin: auto;
-    padding: 40px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.1);
-}
-
-.phone {
-    font-size: 28px;
-    color: #e60000;
-    font-weight: bold;
-    margin: 20px;
-}
-
-/* FOOTER */
-footer {
-    background: #000;
-    color: white;
-    text-align: center;
-    padding: 25px;
-}
-
-/* MOBILE */
-@media(max-width: 700px) {
-
-    header {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    nav a {
-        margin: 5px;
-        font-size: 13px;
-    }
-
-    .hero {
-        background: #000;
-    }
-
-    .hero h1 {
-        font-size: 40px;
-    }
-
-    .cart-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .quantity-controls {
-        width: 100%;
-        justify-content: space-between;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MUGI Ltd | IT Tools Store</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #ffffff;
+            color: #111111;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        header {
+            background: #000000;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #87ceeb;
+        }
+
+        .logo span {
+            color: #ff0000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #87ceeb;
+        }
+
+        .cart-link {
+            background: #ff0000;
+            color: white !important;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .cart-count {
+            background: #87ceeb;
+            color: #000000;
+            padding: 2px 7px;
+            border-radius: 50%;
+            margin-left: 5px;
+            font-size: 13px;
+        }
+
+        .hero {
+            min-height: 500px;
+            background:
+                linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+                url("https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 30px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #87ceeb;
+        }
+
+        .hero p {
+            font-size: 21px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            border: none;
+            border-radius: 5px;
+            background: #ff0000;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background: #87ceeb;
+            color: #000000;
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 70px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .section-title .line {
+            width: 70px;
+            height: 4px;
+            background: #ff0000;
+            margin: auto;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .category {
+            border: 2px solid #87ceeb;
+            padding: 30px 15px;
+            text-align: center;
+            border-radius: 8px;
+            background: #f5fcff;
+            transition: 0.3s;
+        }
+
+        .category:hover {
+            background: #87ceeb;
+            transform: translateY(-5px);
+        }
+
+        .category h3 {
+            font-size: 21px;
+        }
+
+        .shop-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-box input,
+        .filter-box select {
+            width: 100%;
+            padding: 13px;
+            border: 2px solid #87ceeb;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .filter-box {
+            width: 220px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 18px;
+        }
+
+        .product-info h3 {
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+
+        .price {
+            color: #ff0000;
+            font-size: 21px;
+            font-weight: bold;
+            margin: 8px 0;
+        }
+
+        .product-detail {
+            margin: 5px 0;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .condition-new {
+            color: green;
+            font-weight: bold;
+        }
+
+        .condition-used {
+            color: #ff0000;
+            font-weight: bold;
+        }
+
+        .cart-section {
+            background: #f2f9fc;
+        }
+
+        .cart-container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .cart-item {
+            border-bottom: 1px solid #ddd;
+            padding: 18px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .cart-item h3 {
+            min-width: 180px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quantity-btn {
+            border: none;
+            background: #87ceeb;
+            color: #000000;
+            padding: 7px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .remove-btn {
+            border: none;
+            background: #ff0000;
+            color: white;
+            padding: 7px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .cart-total {
+            text-align: right;
+            font-size: 25px;
+            font-weight: bold;
+            margin-top: 25px;
+            color: #ff0000;
+        }
+
+        .cart-actions {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .about {
+            background: #000000;
+            color: white;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            color: #87ceeb;
+            margin-bottom: 20px;
+            font-size: 35px;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact-box {
+            max-width: 700px;
+            margin: auto;
+            border: 2px solid #87ceeb;
+            padding: 35px;
+            border-radius: 8px;
+        }
+
+        .contact-box h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .phone-number {
+            font-size: 25px;
+            font-weight: bold;
+            color: #ff0000;
+            margin: 15px 0;
+        }
+
+        footer {
+            background: #000000;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer span {
+            color: #87ceeb;
+        }
+
+        .no-products {
+            text-align: center;
+            padding: 40px;
+            grid-column: 1 / -1;
+            font-size: 20px;
+        }
+
+        @media (max-width: 1000px) {
+            .products {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .categories {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-box {
+                width: 100%;
+            }
+
+            .hero {
+                min-height: 430px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .cart-container {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header>
+    <nav class="navbar">
 
-    <div class="logo">
-        MUGI <span>Ltd</span>
-    </div>
-
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#products">Products</a>
-        <a href="#cart" class="cart-link">
-            🛒 Cart
-            <span id="cartCount" class="cart-count">0</span>
+        <a href="#home" class="logo">
+            MUGI <span>Ltd</span>
         </a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
 
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li>
+                <a href="#cart" class="cart-link">
+                    Cart
+                    <span id="cartCount" class="cart-count">0</span>
+                </a>
+            </li>
+        </ul>
+
+    </nav>
 </header>
 
 
-<!-- HERO -->
 <section class="hero" id="home">
 
     <div class="hero-content">
 
         <h1>
-            MUGI <span>Ltd</span>
+            Welcome to <span>MUGI Ltd</span>
         </h1>
 
         <p>
-            Welcome to MUGI Ltd, your trusted shop for
-            computers, phones, desktops and IT accessories.
-            We sell both new and quality second-hand products.
+            Your trusted store for computers, laptops, phones,
+            accessories and other IT tools.
         </p>
 
         <a href="#products" class="btn">
-            SHOP NOW
+            Shop Products
+        </a>
+
+        <a href="https://wa.me/250785790708"
+           target="_blank"
+           class="btn">
+            WhatsApp Us
         </a>
 
     </div>
@@ -449,37 +514,45 @@ footer {
 </section>
 
 
-<!-- CATEGORIES -->
-<section>
+<section class="section">
 
-    <h2 class="section-title">
-        Our <span>Categories</span>
-    </h2>
+    <div class="section-title">
+        <h2>Product Categories</h2>
+        <div class="line"></div>
+    </div>
 
     <div class="categories">
 
         <div class="category">
-            <div class="category-icon">💻</div>
             <h3>Laptops</h3>
-            <p>New and second-hand laptops.</p>
         </div>
 
         <div class="category">
-            <div class="category-icon">🖥️</div>
-            <h3>Desktops</h3>
-            <p>Desktop computers for business and home.</p>
+            <h3>Desktop Computers</h3>
         </div>
 
         <div class="category">
-            <div class="category-icon">📱</div>
             <h3>Phones</h3>
-            <p>Smartphones and mobile phones.</p>
         </div>
 
         <div class="category">
-            <div class="category-icon">🔌</div>
-            <h3>Accessories</h3>
-            <p>Phone and computer accessories.</p>
+            <h3>Computer Accessories</h3>
+        </div>
+
+        <div class="category">
+            <h3>Phone Accessories</h3>
+        </div>
+
+        <div class="category">
+            <h3>New Products</h3>
+        </div>
+
+        <div class="category">
+            <h3>Second-Hand Products</h3>
+        </div>
+
+        <div class="category">
+            <h3>IT Tools</h3>
         </div>
 
     </div>
@@ -487,345 +560,327 @@ footer {
 </section>
 
 
-<!-- PRODUCTS -->
-<section id="products">
+<section class="section" id="products">
 
-    <h2 class="section-title">
-        Our <span>Products</span>
-    </h2>
+    <div class="section-title">
 
-    <div class="filter-area">
+        <h2>Our Products</h2>
 
-        <input
-            type="text"
-            id="search"
-            placeholder="Search products..."
-            onkeyup="searchProducts()"
-        >
+        <p>
+            Find computers, phones and IT accessories at MUGI Ltd.
+        </p>
 
-        <select id="typeFilter" onchange="filterProducts()">
-
-            <option value="all">
-                All Products
-            </option>
-
-            <option value="new">
-                New Products
-            </option>
-
-            <option value="used">
-                Second-hand Products
-            </option>
-
-        </select>
+        <div class="line"></div>
 
     </div>
 
 
-    <div class="products" id="productList">
+    <div class="shop-controls">
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search for a product..."
+                onkeyup="filterProducts()">
+
+        </div>
+
+        <div class="filter-box">
+
+            <select id="conditionFilter" onchange="filterProducts()">
+
+                <option value="all">All Products</option>
+                <option value="new">New Products</option>
+                <option value="used">Second-Hand Products</option>
+
+            </select>
+
+        </div>
+
+    </div>
 
 
-        <!-- DELL LAPTOP -->
-        <div class="product"
-             data-type="new"
-             data-name="Dell Laptop">
+    <div class="products" id="productContainer">
+
+        <div class="product-card"
+             data-name="Dell Laptop"
+             data-condition="new">
 
             <img
-            src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80"
-            alt="Dell Laptop">
+                class="product-image"
+                src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80"
+                alt="Dell Laptop">
 
             <div class="product-info">
-
-                <span class="badge new">
-                    NEW
-                </span>
 
                 <h3>Dell Laptop</h3>
 
-                <p class="details">
-                    Intel Core i5<br>
-                    8GB RAM<br>
-                    256GB SSD<br>
-                    Made: 2025
+                <p class="price">450,000 RWF</p>
+
+                <p class="product-detail">
+                    Condition:
+                    <span class="condition-new">New</span>
                 </p>
 
-                <div class="price">
-                    450,000 RWF
-                </div>
+                <p class="product-detail">
+                    Manufacturing Year: 2025
+                </p>
 
                 <button
-                    class="btn cart-btn"
-                    onclick="addToCart('Dell Laptop',450000)">
-                    🛒 Add to Cart
+                    class="btn"
+                    onclick="addToCart('Dell Laptop', 450000)">
+                    Add to Cart
                 </button>
 
             </div>
+
         </div>
 
 
-        <!-- HP LAPTOP -->
-        <div class="product"
-             data-type="used"
-             data-name="HP Laptop">
+        <div class="product-card"
+             data-name="HP Laptop"
+             data-condition="used">
 
             <img
-            src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80"
-            alt="HP Laptop">
+                class="product-image"
+                src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80"
+                alt="HP Laptop">
 
             <div class="product-info">
-
-                <span class="badge used">
-                    SECOND-HAND
-                </span>
 
                 <h3>HP Laptop</h3>
 
-                <p class="details">
-                    Intel Core i5<br>
-                    8GB RAM<br>
-                    500GB HDD<br>
-                    Made: 2021
+                <p class="price">280,000 RWF</p>
+
+                <p class="product-detail">
+                    Condition:
+                    <span class="condition-used">Second-Hand</span>
                 </p>
 
-                <div class="price">
-                    280,000 RWF
-                </div>
+                <p class="product-detail">
+                    Manufacturing Year: 2021
+                </p>
 
                 <button
-                    class="btn cart-btn"
-                    onclick="addToCart('HP Laptop',280000)">
-                    🛒 Add to Cart
+                    class="btn"
+                    onclick="addToCart('HP Laptop', 280000)">
+                    Add to Cart
                 </button>
 
             </div>
+
         </div>
 
 
-        <!-- SAMSUNG -->
-        <div class="product"
-             data-type="new"
-             data-name="Samsung Smartphone">
+        <div class="product-card"
+             data-name="Samsung Smartphone"
+             data-condition="new">
 
             <img
-            src="https://images.unsplash.com/photo-1610945264803-c22b62d2a7b3?auto=format&fit=crop&w=800&q=80"
-            alt="Samsung Smartphone">
+                class="product-image"
+                src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80"
+                alt="Samsung Smartphone">
 
             <div class="product-info">
-
-                <span class="badge new">
-                    NEW
-                </span>
 
                 <h3>Samsung Smartphone</h3>
 
-                <p class="details">
-                    Android Smartphone<br>
-                    128GB Storage<br>
-                    6GB RAM<br>
-                    Made: 2025
+                <p class="price">350,000 RWF</p>
+
+                <p class="product-detail">
+                    Condition:
+                    <span class="condition-new">New</span>
                 </p>
 
-                <div class="price">
-                    350,000 RWF
-                </div>
+                <p class="product-detail">
+                    Manufacturing Year: 2025
+                </p>
 
                 <button
-                    class="btn cart-btn"
-                    onclick="addToCart('Samsung Smartphone',350000)">
-                    🛒 Add to Cart
+                    class="btn"
+                    onclick="addToCart('Samsung Smartphone', 350000)">
+                    Add to Cart
                 </button>
 
             </div>
+
         </div>
 
 
-        <!-- IPHONE -->
-        <div class="product"
-             data-type="used"
-             data-name="iPhone">
+        <div class="product-card"
+             data-name="iPhone"
+             data-condition="used">
 
             <img
-            src="https://images.unsplash.com/photo-1592286927505-2fd1c7f3e6a1?auto=format&fit=crop&w=800&q=80"
-            alt="iPhone">
+                class="product-image"
+                src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=800&q=80"
+                alt="iPhone">
 
             <div class="product-info">
-
-                <span class="badge used">
-                    SECOND-HAND
-                </span>
 
                 <h3>iPhone</h3>
 
-                <p class="details">
-                    128GB Storage<br>
-                    Good condition<br>
-                    Smartphone<br>
-                    Made: 2022
+                <p class="price">500,000 RWF</p>
+
+                <p class="product-detail">
+                    Condition:
+                    <span class="condition-used">Second-Hand</span>
                 </p>
 
-                <div class="price">
-                    500,000 RWF
-                </div>
+                <p class="product-detail">
+                    Manufacturing Year: 2022
+                </p>
 
                 <button
-                    class="btn cart-btn"
-                    onclick="addToCart('iPhone',500000)">
-                    🛒 Add to Cart
+                    class="btn"
+                    onclick="addToCart('iPhone', 500000)">
+                    Add to Cart
                 </button>
 
             </div>
+
         </div>
 
 
-        <!-- DESKTOP -->
-        <div class="product"
-             data-type="new"
-             data-name="Desktop Computer">
+        <div class="product-card"
+             data-name="Desktop Computer"
+             data-condition="new">
 
             <img
-            src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?auto=format&fit=crop&w=800&q=80"
-            alt="Desktop Computer">
+                class="product-image"
+                src="https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&w=800&q=80"
+                alt="Desktop Computer">
 
             <div class="product-info">
-
-                <span class="badge new">
-                    NEW
-                </span>
 
                 <h3>Desktop Computer</h3>
 
-                <p class="details">
-                    Intel Core i5<br>
-                    8GB RAM<br>
-                    512GB SSD<br>
-                    Made: 2025
+                <p class="price">550,000 RWF</p>
+
+                <p class="product-detail">
+                    Condition:
+                    <span class="condition-new">New</span>
                 </p>
 
-                <div class="price">
-                    550,000 RWF
-                </div>
+                <p class="product-detail">
+                    Manufacturing Year: 2025
+                </p>
 
                 <button
-                    class="btn cart-btn"
-                    onclick="addToCart('Desktop Computer',550000)">
-                    🛒 Add to Cart
+                    class="btn"
+                    onclick="addToCart('Desktop Computer', 550000)">
+                    Add to Cart
                 </button>
 
             </div>
+
         </div>
 
 
-        <!-- KEYBOARD -->
-        <div class="product"
-             data-type="new"
-             data-name="Computer Keyboard">
+        <div class="product-card"
+             data-name="Computer Keyboard"
+             data-condition="new">
 
             <img
-            src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80"
-            alt="Computer Keyboard">
+                class="product-image"
+                src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80"
+                alt="Computer Keyboard">
 
             <div class="product-info">
-
-                <span class="badge new">
-                    NEW
-                </span>
 
                 <h3>Computer Keyboard</h3>
 
-                <p class="details">
-                    USB Keyboard<br>
-                    PC Compatible<br>
-                    Quality Material<br>
-                    Made: 2025
+                <p class="price">15,000 RWF</p>
+
+                <p class="product-detail">
+                    Condition:
+                    <span class="condition-new">New</span>
                 </p>
 
-                <div class="price">
-                    15,000 RWF
-                </div>
+                <p class="product-detail">
+                    Manufacturing Year: 2025
+                </p>
 
                 <button
-                    class="btn cart-btn"
-                    onclick="addToCart('Computer Keyboard',15000)">
-                    🛒 Add to Cart
+                    class="btn"
+                    onclick="addToCart('Computer Keyboard', 15000)">
+                    Add to Cart
                 </button>
 
             </div>
+
         </div>
 
 
-        <!-- CHARGER -->
-        <div class="product"
-             data-type="new"
-             data-name="Phone Charger">
+        <div class="product-card"
+             data-name="Phone Charger"
+             data-condition="new">
 
             <img
-            src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=800&q=80"
-            alt="Phone Charger">
+                class="product-image"
+                src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=800&q=80"
+                alt="Phone Charger">
 
             <div class="product-info">
-
-                <span class="badge new">
-                    NEW
-                </span>
 
                 <h3>Phone Charger</h3>
 
-                <p class="details">
-                    Fast Charging<br>
-                    USB Charger<br>
-                    Smartphone Compatible<br>
-                    Made: 2025
+                <p class="price">12,000 RWF</p>
+
+                <p class="product-detail">
+                    Condition:
+                    <span class="condition-new">New</span>
                 </p>
 
-                <div class="price">
-                    12,000 RWF
-                </div>
+                <p class="product-detail">
+                    Manufacturing Year: 2025
+                </p>
 
                 <button
-                    class="btn cart-btn"
-                    onclick="addToCart('Phone Charger',12000)">
-                    🛒 Add to Cart
+                    class="btn"
+                    onclick="addToCart('Phone Charger', 12000)">
+                    Add to Cart
                 </button>
 
             </div>
+
         </div>
 
 
-        <!-- USED DESKTOP -->
-        <div class="product"
-             data-type="used"
-             data-name="Used Desktop Computer">
+        <div class="product-card"
+             data-name="Used Desktop Computer"
+             data-condition="used">
 
             <img
-            src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=800&q=80"
-            alt="Used Desktop Computer">
+                class="product-image"
+                src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=800&q=80"
+                alt="Used Desktop Computer">
 
             <div class="product-info">
 
-                <span class="badge used">
-                    SECOND-HAND
-                </span>
-
                 <h3>Used Desktop Computer</h3>
 
-                <p class="details">
-                    Intel Core i5<br>
-                    8GB RAM<br>
-                    500GB HDD<br>
-                    Made: 2020
+                <p class="price">250,000 RWF</p>
+
+                <p class="product-detail">
+                    Condition:
+                    <span class="condition-used">Second-Hand</span>
                 </p>
 
-                <div class="price">
-                    250,000 RWF
-                </div>
+                <p class="product-detail">
+                    Manufacturing Year: 2020
+                </p>
 
                 <button
-                    class="btn cart-btn"
-                    onclick="addToCart('Used Desktop Computer',250000)">
-                    🛒 Add to Cart
+                    class="btn"
+                    onclick="addToCart('Used Desktop Computer', 250000)">
+                    Add to Cart
                 </button>
 
             </div>
+
         </div>
 
     </div>
@@ -833,42 +888,43 @@ footer {
 </section>
 
 
-<!-- SHOPPING CART -->
-<section id="cart">
+<section class="section cart-section" id="cart">
 
-    <h2 class="section-title">
-        Shopping <span>Cart</span>
-    </h2>
+    <div class="section-title">
+
+        <h2>Your Shopping Cart</h2>
+
+        <div class="line"></div>
+
+    </div>
 
     <div class="cart-container">
 
         <div id="cartItems">
 
-            <div class="empty-cart">
-                🛒 Your cart is empty.
-            </div>
+            <p>Your cart is empty.</p>
 
         </div>
 
-        <div class="cart-summary">
+        <div class="cart-total">
 
-            <h2>
-                Total:
-                <span id="cartTotal" class="cart-total">
-                    0 RWF
-                </span>
-            </h2>
+            Total:
+            <span id="cartTotal">0 RWF</span>
+
+        </div>
+
+        <div class="cart-actions">
+
+            <button
+                class="btn"
+                onclick="clearCart()">
+                Clear Cart
+            </button>
 
             <button
                 class="btn"
                 onclick="orderCart()">
-                📲 Order Cart on WhatsApp
-            </button>
-
-            <button
-                class="btn clear-btn"
-                onclick="clearCart()">
-                🗑️ Clear Cart
+                Order Cart on WhatsApp
             </button>
 
         </div>
@@ -878,49 +934,63 @@ footer {
 </section>
 
 
-<!-- ABOUT -->
-<section class="about" id="about">
+<section class="section about" id="about">
 
-    <h2 class="section-title">
-        About <span>MUGI Ltd</span>
-    </h2>
+    <div class="about-content">
 
-    <p>
-        MUGI Ltd sells computers, laptops, desktops,
-        smartphones and IT accessories. We provide
-        both new and quality second-hand products
-        at affordable prices.
-    </p>
+        <h2>About MUGI Ltd</h2>
+
+        <p>
+            MUGI Ltd is an IT tools business that provides
+            computers, laptops, desktop computers, phones,
+            phone accessories and computer accessories.
+        </p>
+
+        <p>
+            We offer both new and second-hand products.
+            Customers can view product prices, conditions
+            and manufacturing years before ordering.
+        </p>
+
+        <p>
+            Customers can add products to the shopping cart
+            and send the complete order directly to MUGI Ltd
+            through WhatsApp.
+        </p>
+
+    </div>
 
 </section>
 
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
+<section class="section contact" id="contact">
 
-    <h2 class="section-title">
-        Contact <span>Us</span>
-    </h2>
+    <div class="section-title">
+
+        <h2>Contact MUGI Ltd</h2>
+
+        <div class="line"></div>
+
+    </div>
 
     <div class="contact-box">
 
-        <h3>Order from MUGI Ltd</h3>
-
-        <div class="phone">
-            +250 785 790 708
-        </div>
+        <h3>Place Your Order</h3>
 
         <p>
-            Contact us on WhatsApp to order your products.
+            Contact MUGI Ltd through WhatsApp for product
+            information and orders.
         </p>
 
-        <br>
+        <div class="phone-number">
+            0785790708
+        </div>
 
         <a
             href="https://wa.me/250785790708"
             target="_blank"
             class="btn">
-            📲 WhatsApp Us
+            WhatsApp MUGI Ltd
         </a>
 
     </div>
@@ -928,11 +998,12 @@ footer {
 </section>
 
 
-<!-- FOOTER -->
 <footer>
 
     <p>
-        © 2026 MUGI Ltd — IT Tools & Accessories
+        Copyright 2026
+        <span>MUGI Ltd</span>.
+        All Rights Reserved.
     </p>
 
 </footer>
@@ -940,336 +1011,329 @@ footer {
 
 <script>
 
-/* =========================
-   SHOPPING CART
-========================= */
-
-let cart = [];
+    let cart = [];
 
 
-/* ADD PRODUCT */
-function addToCart(name, price) {
+    function addToCart(name, price) {
 
-    const existing =
-        cart.find(item => item.name === name);
+        const existing = cart.find(
+            item => item.name === name
+        );
 
-    if (existing) {
+        if (existing) {
 
-        existing.quantity++;
+            existing.quantity++;
 
-    } else {
+        } else {
 
-        cart.push({
-            name: name,
-            price: price,
-            quantity: 1
+            cart.push({
+                name: name,
+                price: price,
+                quantity: 1
+            });
+
+        }
+
+        displayCart();
+
+        document.getElementById("cart").scrollIntoView({
+            behavior: "smooth"
         });
-
-    }
-
-    displayCart();
-
-    alert(name + " has been added to your cart!");
-}
-
-
-/* DISPLAY CART */
-function displayCart() {
-
-    const cartItems =
-        document.getElementById("cartItems");
-
-    const cartTotal =
-        document.getElementById("cartTotal");
-
-    const cartCount =
-        document.getElementById("cartCount");
-
-
-    if (cart.length === 0) {
-
-        cartItems.innerHTML = `
-            <div class="empty-cart">
-                🛒 Your cart is empty.
-            </div>
-        `;
-
-        cartTotal.innerText = "0 RWF";
-
-        cartCount.innerText = "0";
-
-        return;
     }
 
 
-    let html = "";
+    function displayCart() {
 
-    let total = 0;
+        const cartItems =
+            document.getElementById("cartItems");
 
-    let itemCount = 0;
+        const cartTotal =
+            document.getElementById("cartTotal");
 
-
-    cart.forEach((item, index) => {
-
-        const subtotal =
-            item.price * item.quantity;
-
-        total += subtotal;
-
-        itemCount += item.quantity;
+        const cartCount =
+            document.getElementById("cartCount");
 
 
-        html += `
+        cartItems.innerHTML = "";
 
-            <div class="cart-item">
 
-                <div>
+        let total = 0;
+        let count = 0;
 
-                    <h3>
-                        ${item.name}
-                    </h3>
+
+        if (cart.length === 0) {
+
+            cartItems.innerHTML =
+                "<p>Your cart is empty.</p>";
+
+            cartTotal.textContent = "0 RWF";
+
+            cartCount.textContent = "0";
+
+            return;
+        }
+
+
+        cart.forEach((item, index) => {
+
+            const itemTotal =
+                item.price * item.quantity;
+
+            total += itemTotal;
+
+            count += item.quantity;
+
+
+            cartItems.innerHTML += `
+
+                <div class="cart-item">
+
+                    <h3>${item.name}</h3>
 
                     <p>
-                        ${item.price.toLocaleString()}
-                        RWF ×
-                        ${item.quantity}
+                        ${item.price.toLocaleString()} RWF
                     </p>
 
-                    <div class="cart-price">
-                        ${subtotal.toLocaleString()}
-                        RWF
+                    <div class="quantity-controls">
+
+                        <button
+                            class="quantity-btn"
+                            onclick="decreaseQuantity(${index})">
+                            Decrease
+                        </button>
+
+                        <strong>
+                            ${item.quantity}
+                        </strong>
+
+                        <button
+                            class="quantity-btn"
+                            onclick="increaseQuantity(${index})">
+                            Increase
+                        </button>
+
                     </div>
 
-                </div>
-
-
-                <div class="quantity-controls">
-
-                    <button
-                        onclick="decreaseQuantity(${index})">
-                        −
-                    </button>
-
-                    <span class="quantity">
-                        ${item.quantity}
-                    </span>
-
-                    <button
-                        onclick="increaseQuantity(${index})">
-                        +
-                    </button>
+                    <strong>
+                        ${itemTotal.toLocaleString()} RWF
+                    </strong>
 
                     <button
                         class="remove-btn"
                         onclick="removeFromCart(${index})">
-                        🗑️
+                        Remove
                     </button>
 
                 </div>
 
-            </div>
+            `;
 
-        `;
-
-    });
+        });
 
 
-    cartItems.innerHTML = html;
+        cartTotal.textContent =
+            total.toLocaleString() + " RWF";
 
-    cartTotal.innerText =
-        total.toLocaleString() + " RWF";
+        cartCount.textContent = count;
 
-    cartCount.innerText =
-        itemCount;
-}
+    }
 
 
-/* INCREASE */
-function increaseQuantity(index) {
+    function increaseQuantity(index) {
 
-    cart[index].quantity++;
+        cart[index].quantity++;
 
-    displayCart();
-}
+        displayCart();
+
+    }
 
 
-/* DECREASE */
-function decreaseQuantity(index) {
+    function decreaseQuantity(index) {
 
-    if (cart[index].quantity > 1) {
+        if (cart[index].quantity > 1) {
 
-        cart[index].quantity--;
+            cart[index].quantity--;
 
-    } else {
+        } else {
+
+            cart.splice(index, 1);
+
+        }
+
+        displayCart();
+
+    }
+
+
+    function removeFromCart(index) {
 
         cart.splice(index, 1);
 
+        displayCart();
+
     }
 
-    displayCart();
-}
 
-
-/* REMOVE */
-function removeFromCart(index) {
-
-    cart.splice(index, 1);
-
-    displayCart();
-}
-
-
-/* CLEAR CART */
-function clearCart() {
-
-    if (cart.length === 0) {
-        return;
-    }
-
-    if (confirm("Are you sure you want to clear your cart?")) {
+    function clearCart() {
 
         cart = [];
 
         displayCart();
-    }
-}
 
-
-/* ORDER CART ON WHATSAPP */
-function orderCart() {
-
-    if (cart.length === 0) {
-
-        alert(
-            "Your cart is empty. Please add products first."
-        );
-
-        return;
     }
 
 
-    let message =
-        "Hello MUGI Ltd 👋%0A%0A" +
-        "I would like to order:%0A%0A";
+    function orderCart() {
+
+        if (cart.length === 0) {
+
+            alert("Your cart is empty.");
+
+            return;
+        }
 
 
-    let total = 0;
+        let message =
+            "MUGI Ltd Order\n\n";
+
+        let total = 0;
 
 
-    cart.forEach(item => {
+        cart.forEach(item => {
 
-        const subtotal =
-            item.price * item.quantity;
+            const itemTotal =
+                item.price * item.quantity;
 
-        total += subtotal;
+            total += itemTotal;
+
+
+            message +=
+                item.name +
+                " - " +
+                item.quantity +
+                " x " +
+                item.price.toLocaleString() +
+                " RWF = " +
+                itemTotal.toLocaleString() +
+                " RWF\n";
+
+        });
 
 
         message +=
-            "• " +
-            item.name +
-            " × " +
-            item.quantity +
-            " = " +
-            subtotal.toLocaleString() +
-            " RWF%0A";
-
-    });
+            "\nTotal: " +
+            total.toLocaleString() +
+            " RWF";
 
 
-    message +=
-        "%0A--------------------%0A" +
-        "*TOTAL: " +
-        total.toLocaleString() +
-        " RWF*%0A%0A" +
-        "Please confirm availability and delivery information.";
+        const whatsappURL =
+            "https://wa.me/250785790708?text=" +
+            encodeURIComponent(message);
 
 
-    const whatsappURL =
-        "https://wa.me/250785790708?text=" +
-        message;
+        window.open(
+            whatsappURL,
+            "_blank"
+        );
+
+    }
 
 
-    window.open(
-        whatsappURL,
-        "_blank"
-    );
-}
+    function filterProducts() {
+
+        const search =
+            document.getElementById("searchInput")
+            .value
+            .toLowerCase();
 
 
-/* =========================
-   SEARCH
-========================= */
-
-function searchProducts() {
-
-    const search =
-        document
-        .getElementById("search")
-        .value
-        .toLowerCase();
+        const condition =
+            document.getElementById("conditionFilter")
+            .value;
 
 
-    const products =
-        document.querySelectorAll(".product");
+        const products =
+            document.querySelectorAll(".product-card");
 
 
-    products.forEach(product => {
-
-        const name =
-            product.dataset.name.toLowerCase();
+        let visibleProducts = 0;
 
 
-        if (name.includes(search)) {
+        products.forEach(product => {
 
-            product.style.display = "block";
+            const name =
+                product.dataset.name.toLowerCase();
+
+            const productCondition =
+                product.dataset.condition;
+
+
+            const matchesSearch =
+                name.includes(search);
+
+
+            const matchesCondition =
+                condition === "all" ||
+                productCondition === condition;
+
+
+            if (
+                matchesSearch &&
+                matchesCondition
+            ) {
+
+                product.style.display = "block";
+
+                visibleProducts++;
+
+            } else {
+
+                product.style.display = "none";
+
+            }
+
+        });
+
+
+        let noProducts =
+            document.getElementById("noProducts");
+
+
+        if (visibleProducts === 0) {
+
+            if (!noProducts) {
+
+                noProducts =
+                    document.createElement("div");
+
+                noProducts.id = "noProducts";
+
+                noProducts.className =
+                    "no-products";
+
+                noProducts.textContent =
+                    "No products found.";
+
+                document
+                    .getElementById("productContainer")
+                    .appendChild(noProducts);
+
+            }
 
         } else {
 
-            product.style.display = "none";
+            if (noProducts) {
+
+                noProducts.remove();
+
+            }
 
         }
 
-    });
-}
+    }
 
 
-/* =========================
-   FILTER
-========================= */
-
-function filterProducts() {
-
-    const filter =
-        document
-        .getElementById("typeFilter")
-        .value;
-
-
-    const products =
-        document.querySelectorAll(".product");
-
-
-    products.forEach(product => {
-
-        if (
-            filter === "all" ||
-            product.dataset.type === filter
-        ) {
-
-            product.style.display = "block";
-
-        } else {
-
-            product.style.display = "none";
-
-        }
-
-    });
-}
-
-
-/* START CART */
-displayCart();
+    displayCart();
 
 </script>
 
