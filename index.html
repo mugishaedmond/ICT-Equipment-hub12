@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>MUGI Ltd | IT Tools Store</title>
+    <title>MUGI Ltd - IT Tools Store</title>
 
     <style>
         * {
@@ -13,33 +13,42 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background: #ffffff;
             color: #111111;
-            line-height: 1.6;
         }
 
         a {
             text-decoration: none;
         }
 
+        button {
+            font-family: Arial, sans-serif;
+        }
+
+        /* HEADER */
+
         header {
             background: #000000;
-            color: white;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .navbar {
             max-width: 1200px;
             margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
         }
 
         .logo {
@@ -54,12 +63,13 @@
 
         .nav-links {
             display: flex;
-            gap: 25px;
+            align-items: center;
+            gap: 20px;
             list-style: none;
         }
 
         .nav-links a {
-            color: white;
+            color: #ffffff;
             font-weight: bold;
             transition: 0.3s;
         }
@@ -70,24 +80,30 @@
 
         .cart-link {
             background: #ff0000;
-            color: white !important;
-            padding: 8px 15px;
+            padding: 8px 14px;
             border-radius: 5px;
+        }
+
+        .cart-link:hover {
+            color: #ffffff !important;
+            background: #cc0000;
         }
 
         .cart-count {
             background: #87ceeb;
             color: #000000;
-            padding: 2px 7px;
             border-radius: 50%;
-            margin-left: 5px;
+            padding: 2px 7px;
+            margin-left: 4px;
             font-size: 13px;
         }
 
+        /* HERO */
+
         .hero {
-            min-height: 500px;
+            min-height: 520px;
             background:
-                linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+                linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
                 url("https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1600&q=80");
             background-size: cover;
             background-position: center;
@@ -95,8 +111,8 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
-            padding: 30px;
+            padding: 30px 20px;
+            color: #ffffff;
         }
 
         .hero-content {
@@ -113,27 +129,41 @@
         }
 
         .hero p {
-            font-size: 21px;
+            font-size: 20px;
             margin-bottom: 25px;
         }
 
+        /* BUTTONS */
+
         .btn {
-            display: inline-block;
-            padding: 12px 22px;
             border: none;
-            border-radius: 5px;
             background: #ff0000;
-            color: white;
-            font-weight: bold;
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 5px;
             cursor: pointer;
-            transition: 0.3s;
+            font-weight: bold;
+            display: inline-block;
             margin: 5px;
+            transition: 0.3s;
         }
 
         .btn:hover {
             background: #87ceeb;
             color: #000000;
         }
+
+        .blue-btn {
+            background: #87ceeb;
+            color: #000000;
+        }
+
+        .blue-btn:hover {
+            background: #ff0000;
+            color: #ffffff;
+        }
+
+        /* GENERAL SECTIONS */
 
         .section {
             max-width: 1200px;
@@ -151,12 +181,18 @@
             margin-bottom: 10px;
         }
 
-        .section-title .line {
+        .section-title p {
+            color: #555555;
+        }
+
+        .line {
             width: 70px;
             height: 4px;
             background: #ff0000;
-            margin: auto;
+            margin: 12px auto;
         }
+
+        /* CATEGORIES */
 
         .categories {
             display: grid;
@@ -166,10 +202,11 @@
 
         .category {
             border: 2px solid #87ceeb;
+            background: #f4fbfe;
             padding: 30px 15px;
             text-align: center;
             border-radius: 8px;
-            background: #f5fcff;
+            cursor: pointer;
             transition: 0.3s;
         }
 
@@ -179,13 +216,13 @@
         }
 
         .category h3 {
-            font-size: 21px;
+            font-size: 19px;
         }
+
+        /* PRODUCTS */
 
         .shop-controls {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
             gap: 15px;
             margin-bottom: 30px;
             flex-wrap: wrap;
@@ -202,12 +239,12 @@
             padding: 13px;
             border: 2px solid #87ceeb;
             border-radius: 5px;
-            font-size: 16px;
             outline: none;
+            font-size: 16px;
         }
 
         .filter-box {
-            width: 220px;
+            width: 230px;
         }
 
         .products {
@@ -217,8 +254,8 @@
         }
 
         .product-card {
-            background: white;
-            border: 1px solid #ddd;
+            background: #ffffff;
+            border: 1px solid #dddddd;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -241,8 +278,8 @@
         }
 
         .product-info h3 {
-            margin-bottom: 8px;
             font-size: 20px;
+            margin-bottom: 8px;
         }
 
         .price {
@@ -252,47 +289,65 @@
             margin: 8px 0;
         }
 
-        .product-detail {
-            margin: 5px 0;
-            color: #555;
+        .detail {
+            color: #555555;
             font-size: 14px;
+            margin: 5px 0;
         }
 
-        .condition-new {
+        .new {
             color: green;
             font-weight: bold;
         }
 
-        .condition-used {
+        .used {
             color: #ff0000;
             font-weight: bold;
         }
 
+        /* CART */
+
         .cart-section {
             background: #f2f9fc;
+            max-width: none;
+        }
+
+        .cart-inner {
+            max-width: 900px;
+            margin: auto;
         }
 
         .cart-container {
-            max-width: 900px;
-            margin: auto;
-            background: white;
+            background: #ffffff;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
+        .empty-cart {
+            text-align: center;
+            color: #666666;
+            padding: 20px;
+        }
+
         .cart-item {
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #dddddd;
             padding: 18px 0;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             gap: 15px;
             flex-wrap: wrap;
         }
 
-        .cart-item h3 {
+        .cart-item-name {
             min-width: 180px;
+            font-weight: bold;
+        }
+
+        .cart-item-price {
+            color: #ff0000;
+            font-weight: bold;
         }
 
         .quantity-controls {
@@ -314,7 +369,7 @@
         .remove-btn {
             border: none;
             background: #ff0000;
-            color: white;
+            color: #ffffff;
             padding: 7px 12px;
             border-radius: 4px;
             cursor: pointer;
@@ -322,42 +377,43 @@
 
         .cart-total {
             text-align: right;
+            color: #ff0000;
             font-size: 25px;
             font-weight: bold;
             margin-top: 25px;
-            color: #ff0000;
         }
 
         .cart-actions {
             text-align: right;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
-        .about {
+        /* ABOUT */
+
+        .about-section {
             background: #000000;
-            color: white;
+            color: #ffffff;
+            max-width: none;
         }
 
-        .about-content {
+        .about-inner {
             max-width: 900px;
             margin: auto;
             text-align: center;
         }
 
-        .about-content h2 {
+        .about-inner h2 {
             color: #87ceeb;
-            margin-bottom: 20px;
             font-size: 35px;
+            margin-bottom: 20px;
         }
 
-        .about-content p {
+        .about-inner p {
             font-size: 18px;
             margin-bottom: 15px;
         }
 
-        .contact {
-            text-align: center;
-        }
+        /* CONTACT */
 
         .contact-box {
             max-width: 700px;
@@ -365,6 +421,7 @@
             border: 2px solid #87ceeb;
             padding: 35px;
             border-radius: 8px;
+            text-align: center;
         }
 
         .contact-box h3 {
@@ -373,15 +430,17 @@
         }
 
         .phone-number {
-            font-size: 25px;
-            font-weight: bold;
             color: #ff0000;
+            font-size: 26px;
+            font-weight: bold;
             margin: 15px 0;
         }
 
+        /* FOOTER */
+
         footer {
             background: #000000;
-            color: white;
+            color: #ffffff;
             text-align: center;
             padding: 25px;
         }
@@ -391,11 +450,13 @@
         }
 
         .no-products {
+            grid-column: 1 / -1;
             text-align: center;
             padding: 40px;
-            grid-column: 1 / -1;
             font-size: 20px;
         }
+
+        /* RESPONSIVE */
 
         @media (max-width: 1000px) {
             .products {
@@ -410,21 +471,15 @@
         @media (max-width: 700px) {
             .navbar {
                 flex-direction: column;
-                gap: 15px;
             }
 
             .nav-links {
-                gap: 12px;
-                flex-wrap: wrap;
                 justify-content: center;
+                flex-wrap: wrap;
             }
 
             .hero h1 {
                 font-size: 40px;
-            }
-
-            .hero p {
-                font-size: 17px;
             }
 
             .products {
@@ -433,16 +488,9 @@
         }
 
         @media (max-width: 500px) {
-            .products {
-                grid-template-columns: 1fr;
-            }
-
+            .products,
             .categories {
                 grid-template-columns: 1fr;
-            }
-
-            .filter-box {
-                width: 100%;
             }
 
             .hero {
@@ -451,6 +499,10 @@
 
             .hero h1 {
                 font-size: 34px;
+            }
+
+            .filter-box {
+                width: 100%;
             }
 
             .cart-container {
@@ -462,6 +514,8 @@
 
 <body>
 
+<!-- HEADER -->
+
 <header>
     <nav class="navbar">
 
@@ -470,21 +524,41 @@
         </a>
 
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+
+            <li>
+                <a href="#home">Home</a>
+            </li>
+
+            <li>
+                <a href="#categories">Categories</a>
+            </li>
+
+            <li>
+                <a href="#products">Products</a>
+            </li>
+
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+
             <li>
                 <a href="#cart" class="cart-link">
                     Cart
                     <span id="cartCount" class="cart-count">0</span>
                 </a>
             </li>
+
         </ul>
 
     </nav>
 </header>
 
+
+<!-- HOME -->
 
 <section class="hero" id="home">
 
@@ -495,17 +569,18 @@
         </h1>
 
         <p>
-            Your trusted store for computers, laptops, phones,
-            accessories and other IT tools.
+            Your trusted store for computers, laptops,
+            phones and IT accessories.
         </p>
 
         <a href="#products" class="btn">
-            Shop Products
+            View Products
         </a>
 
-        <a href="https://wa.me/250785790708"
-           target="_blank"
-           class="btn">
+        <a
+            href="https://wa.me/250785790708"
+            target="_blank"
+            class="btn blue-btn">
             WhatsApp Us
         </a>
 
@@ -514,51 +589,59 @@
 </section>
 
 
-<section class="section">
+<!-- CATEGORIES -->
+
+<section class="section" id="categories">
 
     <div class="section-title">
+
         <h2>Product Categories</h2>
+
+        <p>
+            Select a category to see the products.
+        </p>
+
         <div class="line"></div>
+
     </div>
+
 
     <div class="categories">
 
-        <div class="category">
+        <div class="category" onclick="showCategory('laptop')">
             <h3>Laptops</h3>
         </div>
 
-        <div class="category">
+        <div class="category" onclick="showCategory('desktop')">
             <h3>Desktop Computers</h3>
         </div>
 
-        <div class="category">
+        <div class="category" onclick="showCategory('phone')">
             <h3>Phones</h3>
         </div>
 
-        <div class="category">
-            <h3>Computer Accessories</h3>
+        <div class="category" onclick="showCategory('accessory')">
+            <h3>Accessories</h3>
         </div>
 
-        <div class="category">
-            <h3>Phone Accessories</h3>
-        </div>
-
-        <div class="category">
+        <div class="category" onclick="showCategory('new')">
             <h3>New Products</h3>
         </div>
 
-        <div class="category">
+        <div class="category" onclick="showCategory('used')">
             <h3>Second-Hand Products</h3>
         </div>
 
-        <div class="category">
-            <h3>IT Tools</h3>
+        <div class="category" onclick="showCategory('all')">
+            <h3>All Products</h3>
         </div>
 
     </div>
 
 </section>
 
+
+<!-- PRODUCTS -->
 
 <section class="section" id="products">
 
@@ -567,7 +650,7 @@
         <h2>Our Products</h2>
 
         <p>
-            Find computers, phones and IT accessories at MUGI Ltd.
+            Choose your product and add it to your cart.
         </p>
 
         <div class="line"></div>
@@ -582,18 +665,29 @@
             <input
                 type="text"
                 id="searchInput"
-                placeholder="Search for a product..."
+                placeholder="Search products..."
                 onkeyup="filterProducts()">
 
         </div>
 
+
         <div class="filter-box">
 
-            <select id="conditionFilter" onchange="filterProducts()">
+            <select
+                id="conditionFilter"
+                onchange="filterProducts()">
 
-                <option value="all">All Products</option>
-                <option value="new">New Products</option>
-                <option value="used">Second-Hand Products</option>
+                <option value="all">
+                    All Products
+                </option>
+
+                <option value="new">
+                    New Products
+                </option>
+
+                <option value="used">
+                    Second-Hand Products
+                </option>
 
             </select>
 
@@ -604,9 +698,14 @@
 
     <div class="products" id="productContainer">
 
-        <div class="product-card"
-             data-name="Dell Laptop"
-             data-condition="new">
+
+        <!-- DELL LAPTOP -->
+
+        <div
+            class="product-card"
+            data-name="Dell Laptop"
+            data-condition="new"
+            data-category="laptop">
 
             <img
                 class="product-image"
@@ -617,14 +716,16 @@
 
                 <h3>Dell Laptop</h3>
 
-                <p class="price">450,000 RWF</p>
-
-                <p class="product-detail">
-                    Condition:
-                    <span class="condition-new">New</span>
+                <p class="price">
+                    450,000 RWF
                 </p>
 
-                <p class="product-detail">
+                <p class="detail">
+                    Condition:
+                    <span class="new">New</span>
+                </p>
+
+                <p class="detail">
                     Manufacturing Year: 2025
                 </p>
 
@@ -639,9 +740,13 @@
         </div>
 
 
-        <div class="product-card"
-             data-name="HP Laptop"
-             data-condition="used">
+        <!-- HP LAPTOP -->
+
+        <div
+            class="product-card"
+            data-name="HP Laptop"
+            data-condition="used"
+            data-category="laptop">
 
             <img
                 class="product-image"
@@ -652,14 +757,16 @@
 
                 <h3>HP Laptop</h3>
 
-                <p class="price">280,000 RWF</p>
-
-                <p class="product-detail">
-                    Condition:
-                    <span class="condition-used">Second-Hand</span>
+                <p class="price">
+                    280,000 RWF
                 </p>
 
-                <p class="product-detail">
+                <p class="detail">
+                    Condition:
+                    <span class="used">Second-Hand</span>
+                </p>
+
+                <p class="detail">
                     Manufacturing Year: 2021
                 </p>
 
@@ -674,9 +781,13 @@
         </div>
 
 
-        <div class="product-card"
-             data-name="Samsung Smartphone"
-             data-condition="new">
+        <!-- SAMSUNG PHONE -->
+
+        <div
+            class="product-card"
+            data-name="Samsung Smartphone"
+            data-condition="new"
+            data-category="phone">
 
             <img
                 class="product-image"
@@ -687,14 +798,16 @@
 
                 <h3>Samsung Smartphone</h3>
 
-                <p class="price">350,000 RWF</p>
-
-                <p class="product-detail">
-                    Condition:
-                    <span class="condition-new">New</span>
+                <p class="price">
+                    350,000 RWF
                 </p>
 
-                <p class="product-detail">
+                <p class="detail">
+                    Condition:
+                    <span class="new">New</span>
+                </p>
+
+                <p class="detail">
                     Manufacturing Year: 2025
                 </p>
 
@@ -709,9 +822,13 @@
         </div>
 
 
-        <div class="product-card"
-             data-name="iPhone"
-             data-condition="used">
+        <!-- IPHONE -->
+
+        <div
+            class="product-card"
+            data-name="iPhone"
+            data-condition="used"
+            data-category="phone">
 
             <img
                 class="product-image"
@@ -722,14 +839,16 @@
 
                 <h3>iPhone</h3>
 
-                <p class="price">500,000 RWF</p>
-
-                <p class="product-detail">
-                    Condition:
-                    <span class="condition-used">Second-Hand</span>
+                <p class="price">
+                    500,000 RWF
                 </p>
 
-                <p class="product-detail">
+                <p class="detail">
+                    Condition:
+                    <span class="used">Second-Hand</span>
+                </p>
+
+                <p class="detail">
                     Manufacturing Year: 2022
                 </p>
 
@@ -744,9 +863,13 @@
         </div>
 
 
-        <div class="product-card"
-             data-name="Desktop Computer"
-             data-condition="new">
+        <!-- DESKTOP -->
+
+        <div
+            class="product-card"
+            data-name="Desktop Computer"
+            data-condition="new"
+            data-category="desktop">
 
             <img
                 class="product-image"
@@ -757,14 +880,16 @@
 
                 <h3>Desktop Computer</h3>
 
-                <p class="price">550,000 RWF</p>
-
-                <p class="product-detail">
-                    Condition:
-                    <span class="condition-new">New</span>
+                <p class="price">
+                    550,000 RWF
                 </p>
 
-                <p class="product-detail">
+                <p class="detail">
+                    Condition:
+                    <span class="new">New</span>
+                </p>
+
+                <p class="detail">
                     Manufacturing Year: 2025
                 </p>
 
@@ -779,9 +904,13 @@
         </div>
 
 
-        <div class="product-card"
-             data-name="Computer Keyboard"
-             data-condition="new">
+        <!-- KEYBOARD -->
+
+        <div
+            class="product-card"
+            data-name="Computer Keyboard"
+            data-condition="new"
+            data-category="accessory">
 
             <img
                 class="product-image"
@@ -792,14 +921,16 @@
 
                 <h3>Computer Keyboard</h3>
 
-                <p class="price">15,000 RWF</p>
-
-                <p class="product-detail">
-                    Condition:
-                    <span class="condition-new">New</span>
+                <p class="price">
+                    15,000 RWF
                 </p>
 
-                <p class="product-detail">
+                <p class="detail">
+                    Condition:
+                    <span class="new">New</span>
+                </p>
+
+                <p class="detail">
                     Manufacturing Year: 2025
                 </p>
 
@@ -814,9 +945,13 @@
         </div>
 
 
-        <div class="product-card"
-             data-name="Phone Charger"
-             data-condition="new">
+        <!-- PHONE CHARGER -->
+
+        <div
+            class="product-card"
+            data-name="Phone Charger"
+            data-condition="new"
+            data-category="accessory">
 
             <img
                 class="product-image"
@@ -827,14 +962,16 @@
 
                 <h3>Phone Charger</h3>
 
-                <p class="price">12,000 RWF</p>
-
-                <p class="product-detail">
-                    Condition:
-                    <span class="condition-new">New</span>
+                <p class="price">
+                    12,000 RWF
                 </p>
 
-                <p class="product-detail">
+                <p class="detail">
+                    Condition:
+                    <span class="new">New</span>
+                </p>
+
+                <p class="detail">
                     Manufacturing Year: 2025
                 </p>
 
@@ -849,9 +986,13 @@
         </div>
 
 
-        <div class="product-card"
-             data-name="Used Desktop Computer"
-             data-condition="used">
+        <!-- USED DESKTOP -->
+
+        <div
+            class="product-card"
+            data-name="Used Desktop Computer"
+            data-condition="used"
+            data-category="desktop">
 
             <img
                 class="product-image"
@@ -862,14 +1003,16 @@
 
                 <h3>Used Desktop Computer</h3>
 
-                <p class="price">250,000 RWF</p>
-
-                <p class="product-detail">
-                    Condition:
-                    <span class="condition-used">Second-Hand</span>
+                <p class="price">
+                    250,000 RWF
                 </p>
 
-                <p class="product-detail">
+                <p class="detail">
+                    Condition:
+                    <span class="used">Second-Hand</span>
+                </p>
+
+                <p class="detail">
                     Manufacturing Year: 2020
                 </p>
 
@@ -883,49 +1026,67 @@
 
         </div>
 
+
     </div>
 
 </section>
 
+
+<!-- CART -->
 
 <section class="section cart-section" id="cart">
 
-    <div class="section-title">
+    <div class="cart-inner">
 
-        <h2>Your Shopping Cart</h2>
+        <div class="section-title">
 
-        <div class="line"></div>
+            <h2>Shopping Cart</h2>
 
-    </div>
+            <p>
+                Review your products before ordering.
+            </p>
 
-    <div class="cart-container">
-
-        <div id="cartItems">
-
-            <p>Your cart is empty.</p>
+            <div class="line"></div>
 
         </div>
 
-        <div class="cart-total">
 
-            Total:
-            <span id="cartTotal">0 RWF</span>
+        <div class="cart-container">
 
-        </div>
+            <div id="cartItems">
 
-        <div class="cart-actions">
+                <p class="empty-cart">
+                    Your cart is empty.
+                </p>
 
-            <button
-                class="btn"
-                onclick="clearCart()">
-                Clear Cart
-            </button>
+            </div>
 
-            <button
-                class="btn"
-                onclick="orderCart()">
-                Order Cart on WhatsApp
-            </button>
+
+            <div class="cart-total">
+
+                Total:
+                <span id="cartTotal">
+                    0 RWF
+                </span>
+
+            </div>
+
+
+            <div class="cart-actions">
+
+                <button
+                    class="btn blue-btn"
+                    onclick="clearCart()">
+                    Clear Cart
+                </button>
+
+                <button
+                    class="btn"
+                    onclick="orderCart()">
+                    Order Cart on WhatsApp
+                </button>
+
+            </div>
 
         </div>
 
@@ -934,28 +1095,33 @@
 </section>
 
 
-<section class="section about" id="about">
+<!-- ABOUT -->
 
-    <div class="about-content">
+<section class="section about-section" id="about">
+
+    <div class="about-inner">
 
         <h2>About MUGI Ltd</h2>
 
         <p>
-            MUGI Ltd is an IT tools business that provides
-            computers, laptops, desktop computers, phones,
-            phone accessories and computer accessories.
+            MUGI Ltd sells IT tools and technology products.
         </p>
 
         <p>
-            We offer both new and second-hand products.
-            Customers can view product prices, conditions
-            and manufacturing years before ordering.
+            Our products include laptops, desktop computers,
+            smartphones, computer accessories and phone
+            accessories.
         </p>
 
         <p>
-            Customers can add products to the shopping cart
-            and send the complete order directly to MUGI Ltd
-            through WhatsApp.
+            We provide both new and second-hand products
+            with prices and manufacturing years displayed.
+        </p>
+
+        <p>
+            Customers can select products, add them to a cart
+            and send their order directly to MUGI Ltd through
+            WhatsApp.
         </p>
 
     </div>
@@ -963,7 +1129,9 @@
 </section>
 
 
-<section class="section contact" id="contact">
+<!-- CONTACT -->
+
+<section class="section" id="contact">
 
     <div class="section-title">
 
@@ -973,13 +1141,14 @@
 
     </div>
 
+
     <div class="contact-box">
 
         <h3>Place Your Order</h3>
 
         <p>
-            Contact MUGI Ltd through WhatsApp for product
-            information and orders.
+            Contact us on WhatsApp for orders and product
+            information.
         </p>
 
         <div class="phone-number">
@@ -998,6 +1167,8 @@
 </section>
 
 
+<!-- FOOTER -->
+
 <footer>
 
     <p>
@@ -1011,18 +1182,23 @@
 
 <script>
 
+    /* CART DATA */
+
     let cart = [];
 
 
+    /* ADD PRODUCT TO CART */
+
     function addToCart(name, price) {
 
-        const existing = cart.find(
+        const existingProduct = cart.find(
             item => item.name === name
         );
 
-        if (existing) {
 
-            existing.quantity++;
+        if (existingProduct) {
+
+            existingProduct.quantity++;
 
         } else {
 
@@ -1034,13 +1210,19 @@
 
         }
 
+
         displayCart();
 
-        document.getElementById("cart").scrollIntoView({
-            behavior: "smooth"
-        });
+        document
+            .getElementById("cart")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
     }
 
+
+    /* DISPLAY CART */
 
     function displayCart() {
 
@@ -1058,13 +1240,17 @@
 
 
         let total = 0;
+
         let count = 0;
 
 
         if (cart.length === 0) {
 
-            cartItems.innerHTML =
-                "<p>Your cart is empty.</p>";
+            cartItems.innerHTML = `
+                <p class="empty-cart">
+                    Your cart is empty.
+                </p>
+            `;
 
             cartTotal.textContent = "0 RWF";
 
@@ -1079,6 +1265,7 @@
             const itemTotal =
                 item.price * item.quantity;
 
+
             total += itemTotal;
 
             count += item.quantity;
@@ -1088,11 +1275,13 @@
 
                 <div class="cart-item">
 
-                    <h3>${item.name}</h3>
+                    <div class="cart-item-name">
+                        ${item.name}
+                    </div>
 
-                    <p>
+                    <div>
                         ${item.price.toLocaleString()} RWF
-                    </p>
+                    </div>
 
                     <div class="quantity-controls">
 
@@ -1114,9 +1303,9 @@
 
                     </div>
 
-                    <strong>
+                    <div class="cart-item-price">
                         ${itemTotal.toLocaleString()} RWF
-                    </strong>
+                    </div>
 
                     <button
                         class="remove-btn"
@@ -1134,10 +1323,13 @@
         cartTotal.textContent =
             total.toLocaleString() + " RWF";
 
+
         cartCount.textContent = count;
 
     }
 
+
+    /* INCREASE QUANTITY */
 
     function increaseQuantity(index) {
 
@@ -1147,6 +1339,8 @@
 
     }
 
+
+    /* DECREASE QUANTITY */
 
     function decreaseQuantity(index) {
 
@@ -1165,6 +1359,8 @@
     }
 
 
+    /* REMOVE PRODUCT */
+
     function removeFromCart(index) {
 
         cart.splice(index, 1);
@@ -1174,6 +1370,8 @@
     }
 
 
+    /* CLEAR CART */
+
     function clearCart() {
 
         cart = [];
@@ -1182,6 +1380,8 @@
 
     }
 
+
+    /* SEND CART TO WHATSAPP */
 
     function orderCart() {
 
@@ -1196,6 +1396,7 @@
         let message =
             "MUGI Ltd Order\n\n";
 
+
         let total = 0;
 
 
@@ -1204,16 +1405,15 @@
             const itemTotal =
                 item.price * item.quantity;
 
+
             total += itemTotal;
 
 
             message +=
                 item.name +
-                " - " +
+                " - Quantity: " +
                 item.quantity +
-                " x " +
-                item.price.toLocaleString() +
-                " RWF = " +
+                " - Price: " +
                 itemTotal.toLocaleString() +
                 " RWF\n";
 
@@ -1239,30 +1439,120 @@
     }
 
 
+    /* CATEGORY CONNECTION */
+
+    function showCategory(category) {
+
+        const products =
+            document.querySelectorAll(".product-card");
+
+
+        document.getElementById("searchInput").value = "";
+
+        document.getElementById("conditionFilter").value = "all";
+
+
+        let found = 0;
+
+
+        products.forEach(product => {
+
+            const productCategory =
+                product.dataset.category;
+
+            const productCondition =
+                product.dataset.condition;
+
+
+            let show = false;
+
+
+            if (category === "all") {
+
+                show = true;
+
+            } else if (category === "new") {
+
+                show =
+                    productCondition === "new";
+
+            } else if (category === "used") {
+
+                show =
+                    productCondition === "used";
+
+            } else {
+
+                show =
+                    productCategory === category;
+
+            }
+
+
+            if (show) {
+
+                product.style.display = "block";
+
+                found++;
+
+            } else {
+
+                product.style.display = "none";
+
+            }
+
+        });
+
+
+        removeNoProductsMessage();
+
+
+        if (found === 0) {
+
+            showNoProductsMessage();
+
+        }
+
+
+        document
+            .getElementById("products")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+
+    /* SEARCH AND CONDITION FILTER */
+
     function filterProducts() {
 
         const search =
-            document.getElementById("searchInput")
-            .value
-            .toLowerCase();
+            document
+                .getElementById("searchInput")
+                .value
+                .toLowerCase()
+                .trim();
 
 
         const condition =
-            document.getElementById("conditionFilter")
-            .value;
+            document
+                .getElementById("conditionFilter")
+                .value;
 
 
         const products =
             document.querySelectorAll(".product-card");
 
 
-        let visibleProducts = 0;
+        let found = 0;
 
 
         products.forEach(product => {
 
             const name =
                 product.dataset.name.toLowerCase();
+
 
             const productCondition =
                 product.dataset.condition;
@@ -1284,7 +1574,7 @@
 
                 product.style.display = "block";
 
-                visibleProducts++;
+                found++;
 
             } else {
 
@@ -1295,43 +1585,59 @@
         });
 
 
-        let noProducts =
-            document.getElementById("noProducts");
+        removeNoProductsMessage();
 
 
-        if (visibleProducts === 0) {
+        if (found === 0) {
 
-            if (!noProducts) {
-
-                noProducts =
-                    document.createElement("div");
-
-                noProducts.id = "noProducts";
-
-                noProducts.className =
-                    "no-products";
-
-                noProducts.textContent =
-                    "No products found.";
-
-                document
-                    .getElementById("productContainer")
-                    .appendChild(noProducts);
-
-            }
-
-        } else {
-
-            if (noProducts) {
-
-                noProducts.remove();
-
-            }
+            showNoProductsMessage();
 
         }
 
     }
 
+
+    /* NO PRODUCT MESSAGE */
+
+    function showNoProductsMessage() {
+
+        const container =
+            document.getElementById("productContainer");
+
+
+        const message =
+            document.createElement("div");
+
+
+        message.id = "noProducts";
+
+        message.className = "no-products";
+
+        message.textContent =
+            "No products found.";
+
+
+        container.appendChild(message);
+
+    }
+
+
+    function removeNoProductsMessage() {
+
+        const message =
+            document.getElementById("noProducts");
+
+
+        if (message) {
+
+            message.remove();
+
+        }
+
+    }
+
+
+    /* START CART */
 
     displayCart();
 
